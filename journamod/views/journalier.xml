@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="journalier_tree" model="ir.ui.view">
+        <field name="name">journamod.journalier.tree</field>
+        <field name="model">journamod.journalier</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Journalier">
+<!--                <field name="sequence_id"></field> -->
+                <field name="nom"></field>
+                <field name="prenom"></field>
+                <field name="user_id"></field>
+                <field name="genre"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="journalier_form" model="ir.ui.view">
+        <field name="name">journamod.journalier.form</field>
+        <field name="model">journamod.journalier</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="journalier">
+                <!--                <header>-->
+                <!--                    <field name="state" widet="statusbar" statusbar_visible="o,l"/>-->
+                <!--                    <button string="Tache" type="object" name="occupeProgressbar"-->
+                <!--                            attrs="{'Invisible': [('state','=','Occupe')]"/>-->
+                <!--                    <button string="Liberer" type="object" name="libreProgressbar"-->
+                <!--                            attrs="{'invisible': [('state','=','Libre')]}"/>-->
+                <!--                </header>-->
+                <!--                <sheet>-->
+                <group string="Information perso">
+                    <field name="nom"/>
+                    <field name="prenom"/>
+                    <field name="genre"/>
+                    <field name="date_naissance"/>
+                    <field name="user_id"/>
+                </group>
+                <!--                </sheet>-->
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="journalier_action">
+        <field name="name">journalier</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">journamod.journalier</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="">Nouveau Journalier</p>
+        </field>
+    </record>
+
+    <menuitem id="journamod_root"
+              name="JournaMod"
+              sequence="10" />
+
+    <menuitem id="journalier_root"
+              name="Journalier"
+              parent="journamod_root"
+              sequence="10" />
+
+    <menuitem id="journalier"
+              name="Journalier"
+              parent="journalier_root"
+              action="journalier_action"
+              sequence="10"/>
+</odoo>
