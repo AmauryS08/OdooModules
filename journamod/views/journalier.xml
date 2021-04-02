@@ -7,7 +7,6 @@
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
             <tree string="Journalier">
-<!--                <field name="sequence_id"></field> -->
                 <field name="nom"></field>
                 <field name="prenom"></field>
                 <field name="user_id"></field>
@@ -22,14 +21,6 @@
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
             <form string="journalier">
-                <!--                <header>-->
-                <!--                    <field name="state" widet="statusbar" statusbar_visible="o,l"/>-->
-                <!--                    <button string="Tache" type="object" name="occupeProgressbar"-->
-                <!--                            attrs="{'Invisible': [('state','=','Occupe')]"/>-->
-                <!--                    <button string="Liberer" type="object" name="libreProgressbar"-->
-                <!--                            attrs="{'invisible': [('state','=','Libre')]}"/>-->
-                <!--                </header>-->
-                <!--                <sheet>-->
                 <group string="Information perso">
                     <field name="nom"/>
                     <field name="prenom"/>
@@ -37,7 +28,6 @@
                     <field name="date_naissance"/>
                     <field name="user_id"/>
                 </group>
-                <!--                </sheet>-->
             </form>
         </field>
     </record>
