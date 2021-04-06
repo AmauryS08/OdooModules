@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="customfacture_form_view" model="ir.ui.view">
+        <field name="name">customSales.customfacture.form</field>
+        <field name="model">customsales.facture</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="Facture">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1" placeholder="Facture..."/>
+                        </h1>
+                    </div>
+                    <group string="Informations">
+                        <group name="information_facture">
+                            <field name="client"/>
+                            <field name="reference_paiement"/>
+                        </group>
+                        <group name="date_facture">
+                            <field name="date_facturation"/>
+                            <field name="data_echeance"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Articles">
+                            <field name="facture_article_id">
+                                <tree>
+                                    <field name="article"/>
+                                    <field name="label"/>
+                                    <field name="quantity"/>
+                                    <field name="prix"/>
+                                    <field name="tax"/>
+<!--                                    <field name="prixtot"/>-->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Autres informations">
+                            <group name="otherinfo_group">
+                                <group string="Facture">
+                                    <field name="reference_client"/>
+                                    <field name="vendeur"/>
+                                    <field name="equipe_commerciale"/>
+                                    <field name="compte_bank_ref"/>
+                                </group>
+                                <group string="Comptabilité">
+                                    <field name="societe"/>
+                                    <field name="incoterm"/>
+                                    <field name="pos_fiscal"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Marketing">
+                                    <field name="campagne"/>
+                                    <field name="moyen"/>
+                                    <field name="source"/>
+                                </group>
+                                <group invisible="1"></group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="customfacture_tree_view" model="ir.ui.view">
+        <field name="name">customSales.customfacture.tree</field>
+        <field name="model">customsales.facture</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="Facture">
+                <!--                <field name="sequence_id"></field> -->
+                <field name="name"></field>
+                <field name="client"></field>
+                <field name="reference_paiement"></field>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="facture_action" model="ir.actions.act_window">
+        <field name="name">Facture</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customsales.facture</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Nouvelles facture.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="customSales_root"
+              name="CustomSales"
+              sequence="10"/>
+
+    <menuitem id="customSalesfacture_root"
+              name="Vente"
+              parent="customSales_root"
+              sequence="10"/>
+
+    <menuitem id="facture"
+              name="Facture"
+              parent="customSalesfacture_root"
+              action="facture_action"
+              sequence="10"/>
+</odoo>
