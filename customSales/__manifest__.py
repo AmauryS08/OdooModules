@@ -7,7 +7,9 @@
     'author': 'Author',
     'depends': ['base','sale'],
     'data': [
-        'views/facture_view.xml'
+        'views/facture_view.xml',
+        'report/facture_report.xml',
+        'report/facture_report_template.xml',
     ],
     'installable': True,
 }
