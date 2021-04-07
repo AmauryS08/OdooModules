@@ -11,6 +11,32 @@
                     <t t-esc="doc.reference_paiement"/>
                     <br/>
                     Date de facturation : <t t-esc="doc.date_facturation"/>
+
+                    <table class="table table-sm o_main_table">
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="td_name" class="text-left">Article</th>
+                                <th name="th_quantity" class="text-right">Quantity</th>
+                                <th name="th_priceunit" class="text-right">Unit Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="doc.facture_article_id" t-as="line">
+                                <tr style="">
+                                    <td name="td_name">
+                                        <span t-field="line.article"/>
+                                    </td>
+                                    <td name="td_quantity" class="text-right">
+                                        <span t-field="line.quantity"/>
+                                    </td>
+                                    <td name="td_priceunit" class="text-right">
+                                        <span t-field="line.prix"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
                 </t>
             </t>
         </t>
