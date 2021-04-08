@@ -19,9 +19,24 @@
                             </div>
                         </div>
 
-                        <t t-esc="doc.reference_paiement"/>
-                        <span>Date de facturation : </span><t t-esc="doc.date_facturation"/>
+                        <span>Référence paiement: </span><t t-esc="doc.reference_paiement"/> <br/>
+                        <div class="row mt32 mb32" id="informations">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <strong>Date de facturation:</strong>
+                                <p class="m-0" t-field="doc.date_facturation" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-2" name="data_echeance">
+                                <strong>Date d'échéance:</strong>
+                                <p class="m-0" t-field="doc.data_echeance" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div t-if="doc.vendeur.name" class="col-auto col-3 mw-100 mb-2">
+                                <strong>Vendeur:</strong>
+                                <p class="m-0" t-field="doc.vendeur"/>
+                            </div>
+                        </div>
 
+                        <!--                        <span>Vendeur : <t t-esc="doc.vendeur"-->
+                        <!--                                   t-options='{"widget": "contact", "fields": ["name"]}'/></span>-->
 
                         <table class="table table-sm o_main_table">
                             <thead style="display: table-row-group">
