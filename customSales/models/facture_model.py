@@ -6,7 +6,7 @@ class facture(models.Model):
     _description = 'model facture'
 
 
-    name = fields.Char(String = "Nom", Requiered=True)
+    name = fields.Char(String = "Facture", readonly="1")
     client = fields.Many2one('res.partner', String = "Client", Requiered=True)
     reference_paiement = fields.Char(String = "Référence paiement", Requiered=True)
     date_facturation = fields.Date(String = "Date facturation", Requiered=True)
@@ -32,9 +32,7 @@ class facture(models.Model):
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
             seq_date = None
-            if 'date_order' in vals:
-                seq_date = fields.Datetime.context_timestamp(self, fields.Datetime.to_datetime(vals['date_order']))
-            vals['name'] = self.env['ir.sequence'].next_by_code('sale.order', sequence_date=seq_date) or _('New')
+            vals['name'] = self.env['ir.sequence'].next_by_code('facture.name.seq', sequence_date=seq_date) or _('Facture')
         result = super(facture, self).create(vals)
         return result
 

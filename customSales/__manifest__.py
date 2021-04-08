@@ -10,7 +10,8 @@
         'views/facture_view.xml',
         'report/facture_report.xml',
         'report/facture_report_template.xml',
-'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'data/facture_sequence_data.xml',
     ],
     'installable': True,
 }

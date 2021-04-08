@@ -10,7 +10,7 @@
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" required="1" placeholder="Facture..."/>
+                            <field name="name" readonly="1"/>
                         </h1>
                     </div>
                     <group string="Informations">
@@ -30,8 +30,8 @@
                                     <field name="article"/>
                                     <field name="label"/>
                                     <field name="quantity"/>
-                                    <field name="prix"/>
-                                    <field name="tax"/>
+                                    <field name="prix" widget="monetary"/>
+                                    <field name="tax" widget="many2many_tags"/>
 <!--                                    <field name="prixtot"/>-->
                                 </tree>
                             </field>
