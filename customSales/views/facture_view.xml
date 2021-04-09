@@ -7,6 +7,11 @@
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
             <form string="Facture">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="o,l"/>
+                    <button string="Definir comme: Payée" type="object" name="state_paye" attrs="{'Invisible': [('state','=','paye')]}"/>
+                    <button string="Definir comme: En attente de paiement" type="object" name="state_enattentepaye" attrs="{'Invisible': [('state','=','enattentepaye')]}"/>
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -17,10 +22,12 @@
                         <group name="information_facture">
                             <field name="client"/>
                             <field name="reference_paiement"/>
+                            <field name="id"/>
                         </group>
                         <group name="date_facture">
                             <field name="date_facturation"/>
                             <field name="data_echeance"/>
+                            <field name="create_date"/>
                         </group>
                     </group>
                     <notebook>
@@ -32,7 +39,9 @@
                                     <field name="quantity"/>
                                     <field name="prix" widget="monetary"/>
                                     <field name="tax" widget="many2many_tags"/>
-<!--                                    <field name="prixtot"/>-->
+                                    <field name="prixtot_ht"/>
+                                    <field name="prixtot_ttc"/>
+                                    <field name="prixtot_bill"/>
                                 </tree>
                             </field>
                         </page>
@@ -75,6 +84,7 @@
                 <field name="name"></field>
                 <field name="client"></field>
                 <field name="reference_paiement"></field>
+                <field name="state"></field>
             </tree>
         </field>
     </record>

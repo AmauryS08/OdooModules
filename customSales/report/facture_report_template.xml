@@ -34,10 +34,6 @@
                                 <p class="m-0" t-field="doc.vendeur"/>
                             </div>
                         </div>
-
-                        <!--                        <span>Vendeur : <t t-esc="doc.vendeur"-->
-                        <!--                                   t-options='{"widget": "contact", "fields": ["name"]}'/></span>-->
-
                         <table class="table table-sm o_main_table">
                             <thead style="display: table-row-group">
                                 <tr>
@@ -64,7 +60,7 @@
                                             <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax))"/>
                                         </td>
                                         <td name="td_couttot" class="text-right">
-                                            <span t-field="line.prix"/>
+                                            <span t-field="line.prixtot_ttc"/>
                                         </td>
                                     </tr>
                                 </t>
