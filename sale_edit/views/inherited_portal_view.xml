@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_edit.sale_edit_qweb"
+              inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//section[@id='details']" position="before">
+            <h1>test</h1>
+        </xpath>
+    </template>
+</odoo>

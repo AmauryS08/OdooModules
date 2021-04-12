@@ -12,6 +12,7 @@
         'report/facture_report_template.xml',
         'security/ir.model.access.csv',
         'data/facture_sequence_data.xml',
+        'views/activite_view.xml',
     ],
     'installable': True,
 }
