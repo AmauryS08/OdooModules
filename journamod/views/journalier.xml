@@ -6,12 +6,13 @@
         <field name="model">journamod.journalier</field>
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
-            <tree string="Journalier">
+            <tree string="Utilisateur">
 <!--                <field name="sequence_id"></field> -->
                 <field name="nom"></field>
                 <field name="prenom"></field>
                 <field name="user_id"></field>
                 <field name="genre"></field>
+                <field name="state"></field>
             </tree>
         </field>
     </record>
@@ -21,7 +22,7 @@
         <field name="model">journamod.journalier</field>
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
-            <form string="journalier">
+            <form string="Utilisateur">
                 <header>
                     <field name="state" widet="statusbar" statusbar_visible="o,l"/>
                     <button string="Donner une Tâche" type="object" name="occupe_progressbar"
@@ -37,6 +38,17 @@
                         <field name="date_naissance"/>
                         <field name="user_id"/>
                     </group>
+                    <notebook>
+                        <page string="Informations personnelles">
+                            <field name="journalier_child_id">
+                                <tree>
+                                        <field name="adress"/>
+                                        <field name="email"/>
+                                        <field name="telephone"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

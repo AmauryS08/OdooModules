@@ -12,7 +12,11 @@ class facture(models.Model):
     reference_paiement = fields.Char(String = "Référence paiement", Requiered=True)
     date_facturation = fields.Date(String = "Date facturation", Requiered=True)
     data_echeance = fields.Date(String = "Date d'échéance")
-    create_date = fields.Date(String = "Date de création")
+
+    prix_total_ht = fields.Float("Prix total HT", compute='_compute_total', readonly="1")
+    prix_total_ttc = fields.Float("Prix total TTC", compute='_compute_total', readonly="1")
+    prix_tax = fields.Float("Taxes", compute='_compute_total', readonly='1')
+
     reference_facture = fields.Char(string="Id facture", compute="_reference_facture")
 
     # Sous menu Autres informations
@@ -54,6 +58,23 @@ class facture(models.Model):
         for record in self:
             record.reference_facture = str(random.randint(1,99999))
 
+    @api.depends('facture_article_id.prix_soustotal', 'facture_article_id.tax')
+    def _compute_total(self):
+        for order in self:
+            totalht = 0
+            totalttc = 0
+            totaltax = 0
+            for line in order.facture_article_id:
+                totalht += line.prix_soustotal
+                totalttc += line.prix_soustotal + line.prix_soustotal * (line.tax.amount / 100)
+                totaltax += line.prix_soustotal * (line.tax.amount / 100)
+            order.update({
+                'prix_total_ht': totalht,
+                'prix_total_ttc': totalttc,
+                'prix_tax': totaltax,
+            })
+
+
 
 class factureArticles(models.Model):
     _name = 'customsales.facture.article'
@@ -62,23 +83,17 @@ class factureArticles(models.Model):
     article = fields.Many2one('product.product', String = "Article")
     label = fields.Char(String = "Label")
     quantity = fields.Float(String = "Quantité")
-    prix = fields.Float(String = "Prix")
+    prix_unite = fields.Float(String = "Prix")
     tax = fields.Many2many('account.tax',String = "Tax")
-    prixtot_ht = fields.Float(String = "Prix Total HT", readonly=True, compute='_computeVar_final')
-    prixtot_ttc = fields.Float(string="Prix Total TTC", readonly=True, compute='_computeVar_final')
-    prixtot_bill = fields.Float(string="Prix TOTAL", readonly=True, compute='_computeVar_final')
+    prix_soustotal = fields.Float(String = "Prix Total HT", readonly=True, compute='_computeVar_final')
 
-    @api.depends('prixtot_ttc', 'prix', 'quantity', 'prixtot_ht', 'tax')
+
+    @api.depends('prix_soustotal', 'prix_unite', 'quantity')
     def _computeVar_final(self):
         for order in self:
-            prixtot = 0.0
             for line in order:
-                line.prixtot_ht = line.prix * line.quantity
-                line.prixtot_ttc = line.prixtot_ht + (line.prixtot_ht * (line.tax.amount / 100))
-                prixtot += line.prixtot_ttc
-            order.update({
-                'prixtot_bill': prixtot,
-            })
+                line.prix_soustotal = line.prix_unite * line.quantity
+
 
     facture_parent_id = fields.Many2one('customsales.facture', String="Informations Personnelles")
 

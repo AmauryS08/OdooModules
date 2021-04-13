@@ -23,6 +23,10 @@
                         <!--<field name="tag"/>-->
                         <field name="time_start"/>
                         <field name="time_end"/>
+
+                        <field name="time_reel_start"/>
+                        <field name="time_reel_end"/>
+
                         <field name="duree"/>
                     </group>
                 </sheet>
@@ -58,8 +62,8 @@
         <field name="model">customsales.activite</field>
         <field name="priority" eval="2"/>
         <field name="arch" type="xml">
-            <calendar js_class="attendee_calendar" string="Activité" date_start="time_start" date_stop="time_end"
-                      event_open_popup="true"
+            <calendar string="Activité" date_start="time_start" date_stop="time_end"
+                      mode="month"
                       event_limit="5">
                 <field name="name"/>
             </calendar>

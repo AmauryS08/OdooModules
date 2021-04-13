@@ -27,7 +27,6 @@
                         <group name="date_facture">
                             <field name="date_facturation"/>
                             <field name="data_echeance"/>
-                            <field name="create_date"/>
                         </group>
                     </group>
                     <notebook>
@@ -37,13 +36,24 @@
                                     <field name="article"/>
                                     <field name="label"/>
                                     <field name="quantity"/>
-                                    <field name="prix" widget="monetary"/>
+                                    <field name="prix_unite" widget="monetary"/>
                                     <field name="tax" widget="many2many_tags"/>
-                                    <field name="prixtot_ht"/>
-                                    <field name="prixtot_ttc"/>
-                                    <field name="prixtot_bill"/>
+                                    <field name="prix_soustotal"/>
                                 </tree>
                             </field>
+                            <group name="facture_total_group" col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="facture_total">
+                                    <field name="prix_total_ht" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                    <field name="prix_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                        <label for="prix_total_ttc" />
+                                    </div>
+                                    <field name="prix_total_ttc" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
                         </page>
                         <page string="Autres informations">
                             <group name="otherinfo_group">

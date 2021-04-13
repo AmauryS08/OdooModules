@@ -10,6 +10,10 @@ class activite(models.Model):
 
     time_start = fields.Date()
     time_end = fields.Date()
+
+    time_reel_start = fields.Date()
+    time_reel_end = fields.Date()
+
     duree = fields.Datetime()
 
     #tag = fields.Many2many('categ_ids')

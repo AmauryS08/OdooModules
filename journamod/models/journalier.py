@@ -22,6 +22,8 @@ class journalier(models.Model):
         ('busy', 'Occupe'),
     ], string="Etat", default='available')
 
+    journalier_child_id = fields.One2many('journamod.journalier_child', 'journalier_parent_id', string="Child ID")
+
     @api.model
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('journamod') or '/'
@@ -35,3 +37,13 @@ class journalier(models.Model):
         self.write({'state': 'available'})
 
     _sql_constraints = [('id_unique', 'UNIQUE(user_id)', 'Numero deja existant.')]
+
+class journalier_child(models.Model):
+    _name = 'journamod.journalier_child'
+    _description = 'Sous menu model'
+
+    adress = fields.Char(String="Adresse")
+    email = fields.Char(String="Email")
+    telephone = fields.Char(String="Telephone")
+
+    journalier_parent_id = fields.Many2one('journamod.journalier', String="Informations Personnelles")
