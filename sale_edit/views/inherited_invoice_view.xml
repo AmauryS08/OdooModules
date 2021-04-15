@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_edit_form_inherit" model="ir.ui.view">
+        <field name="name">sale_edit.invoice_edit.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="studio_customization.odoo_studio_account_0a1005ba-62f6-4e38-8860-4e308b6920ed"/>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <field name="x_studio_oci_ac_numerobi" position="after">
+                <field name="oci_ac_numerobi"/>
+                <field name="oci_ac_techniciens"/>
+                <field name="oci_ac_dateintervention"/>
+                <field name="oci_ac_typeintervention"/>
+            </field>
+        </field>
+    </record>
+</odoo>

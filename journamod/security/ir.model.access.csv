@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_journamod_journalier,access.journamod.journalier,model_journamod_journalier,,1,1,1,1
+access_journamod_journalier_child,access.journamod.journalier_child,model_journamod_journalier_child,,1,1,1,1
+

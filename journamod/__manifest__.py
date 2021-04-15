@@ -9,6 +9,7 @@
     'depends': ['base', 'hr'],
     'data': [
         'views/journalier.xml',
+        'views/testrelation.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,

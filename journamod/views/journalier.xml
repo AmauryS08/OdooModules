@@ -6,7 +6,7 @@
         <field name="model">journamod.journalier</field>
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
-            <tree string="Utilisateur">
+            <tree string="Utilisateur" decoration-danger="state=='busy'" decoration-success="state=='available'">
 <!--                <field name="sequence_id"></field> -->
                 <field name="nom"></field>
                 <field name="prenom"></field>
