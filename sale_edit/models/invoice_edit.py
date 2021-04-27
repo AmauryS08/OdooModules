@@ -4,7 +4,6 @@ from odoo import fields, models, api
 class invoice_edit(models.Model):
     _inherit = 'account.move'
 
-    #fields.Datetime(string="date paiement", related='order_date_id.date_order')
     oci_ac_numerobi = fields.Char(string="N° BI")
     oci_ac_techniciens = fields.Many2many(string="Technicien(s)")
     oci_ac_dateintervention = fields.Date(string="Date d'Intervention")
@@ -55,19 +54,8 @@ class invoice_create(models.TransientModel):
     #             'analytic_tag_ids': [(6, 0, so_line.analytic_tag_ids.ids)],
     #             'analytic_account_id': order.analytic_account_id.id or False,
     #         })],
-    #         'oci_ac_numerobi': order.x_studio_oci_so_numerobi,
-    #         'oci_ac_techniciens': order.x_studio_techniciens,
-    #         'oci_ac_dateintervention': order.x_studio_oci_so_dateintervention,
-    #         'oci_ac_typeintervention': order.x_studio_oci_so_typeintervention,
     #     }
     #
     #     return invoice_vals
 
 
-    # name_test = fields.Char(string="TEST:")
-    # oci_facture_informations = fields.Many2one('sale.order', 'OCI facture information')
-    # #fields.Datetime(string="date paiement", related='order_date_id.date_order')
-    # oci_ac_numerobi = fields.Char(string="N° BI", related='oci_facture_informations.x_studio_oci_so_numerobi')
-    # oci_ac_techniciens = fields.Many2many(string="Technicien(s)", related='oci_facture_informations.x_studio_techniciens')
-    # oci_ac_dateintervention = fields.Date(string="Date d'Intervention", related='oci_facture_informations.x_studio_oci_so_dateintervention')
-    # oci_ac_typeintervention = fields.Selection(string="Type Intervention", related='oci_facture_informations.x_studio_oci_so_typeintervention')
