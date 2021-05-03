@@ -24,7 +24,7 @@ class sale_article_filer(models.Model):
                 # on a database with thousands of matching products, due to the huge merge+unique needed for the
                 # OR operator (and given the fact that the 'name' lookup results come from the ir.translation table
                 # Performing a quick memory merge of ids in Python will give much better performance
-                product_ids = list(self._search(args + [('default_code', operator, name)], limit=limit))
+                product_ids = list(self._search(args + [('default_code', operator, name+'%')], limit=limit))
                 if not limit or len(product_ids) < limit:
                     # we may underrun the limit because of dupes in the results, that's fine
                     limit2 = (limit - len(product_ids)) if limit else False
