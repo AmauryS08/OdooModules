@@ -3,15 +3,25 @@
     <record id="invoice_edit_form_inherit" model="ir.ui.view">
         <field name="name">sale_edit.invoice_edit.form</field>
         <field name="model">account.move</field>
-        <field name="inherit_id" ref="studio_customization.odoo_studio_account_0a1005ba-62f6-4e38-8860-4e308b6920ed"/>
+        <field name="inherit_id" ref="account.view_move_form"/>
         <field name="priority" eval="10"/>
         <field name="arch" type="xml">
-            <field name="x_studio_oci_ac_numerobi" position="replace">
-                <field name="oci_ac_numerobi"/>
-                <field name="oci_ac_techniciens"/>
-                <field name="oci_ac_dateintervention"/>
-                <field name="oci_ac_typeintervention"/>
-            </field>
+			<xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+				<page name="page_oJPRWx" string="Intervention">
+				  <group name="group_oJPRWx">
+  					<group name="group_oJPRW_leftx">
+  					  <field name="x_studio_oci_invoice_ibanso" string="Iban"/>
+  					  <field name="x_studio_oci_invoice_infosso" string="Information"/>
+  					</group>
+  					<group name="group_oJPRW_rightx">
+  						<field name="oci_ac_numerobi"/>
+						<field name="oci_ac_techniciens" widget="many2many_tags"/>
+  						<field name="oci_ac_dateintervention"/>
+  						<field name="oci_ac_typeintervention"/>
+  					</group>
+				  </group>
+				</page>
+			</xpath>
         </field>
     </record>
 </odoo>
