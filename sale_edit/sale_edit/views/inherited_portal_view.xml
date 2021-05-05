@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_edit.sale_edit_qweb"
+              inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//section[@id='details']" position="before">
+            <div class="row" id="oci_custom_horecol1">
+                <div class="mb-3 col-6">
+                    <strong>Technicien(s):</strong>
+                    <span t-field="sale_order.oci_so_techniciens" t-options=""/>
+                </div>
+                <div class="mb-3 col-6">
+                    <strong>Représentant:</strong>
+                    <span t-field="sale_order.oci_so_representant" t-options=""/>
+                </div>
+            </div>
+            <div class="row" id="oci_custom_horecol2">
+                <div class="mb-3 col-6">
+                    <strong>Référence client:</strong>
+                    <span t-field="sale_order.client_order_ref" t-options=""/>
+                </div>
+                <div class="mb-3 col-6">
+                    <strong>Bon Intervention:</strong>
+                    <span t-field="sale_order.oci_so_numerobi" t-options=""/>
+                    <strong>Bon Intervention externe:</strong>
+                    <span t-field="sale_order.oci_so_numerobiexterne" t-options=""/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
