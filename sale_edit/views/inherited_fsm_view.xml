@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="fsm_edit_form_inherit" model="ir.ui.view">
+            <field name="name">sale_edit.fsm_edit.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_order_id']" position="after">
+                    <field name="oci_fsm_representant" string="Représentant"/>
+                    <field name="oci_fsm_techniciens" widget="many2many_tags" string="Technicien(s)" options="{'color_field': 'color'}"/>
+                    <field name="oci_fsm_typeintervention" string="Type intervention"/>
+                    <field name="oci_fsm_dateintervention" string="Date d'intervention"/>
+                    <field name="oci_fsm_numerobi" string="N°BI"/>
+                    <field name="oci_fsm_numerobiexterne" string="N°BI externe"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

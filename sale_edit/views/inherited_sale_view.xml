@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sale_edit_form_inherit" model="ir.ui.view">
+            <field name="name">sale_edit.sale_edit.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="oci_so_representant" string="Représentant"/>
+                    <field name="oci_so_techniciens" widget="many2many_tags" string="Technicien(s)" options="{'color_field': 'color'}"/>
+                    <field name="oci_so_typeintervention" string="Type intervention"/>
+                    <field name="oci_so_dateintervention" string="Date d'intervention"/>
+                    <field name="oci_so_numerobi" string="N°BI"/>
+                    <field name="oci_so_numerobiexterne" string="N°BI externe"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
