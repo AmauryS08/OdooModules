@@ -6,6 +6,9 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="priority" eval="10"/>
         <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': [('state', 'not in', ['commande_confirmee'])]}</attribute>
+            </xpath>
             <header>
                 <button name="actioncommande_confirmee" id="actioncommande_confirmee"
                         string="Confirmer la commande" class="btn-primary" type="object"
