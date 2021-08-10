@@ -8,7 +8,8 @@
     'website': 'www.oci.fr',
     'depends': ['project'],
     'data': [
-        'views/oci_project.xml'
+        'views/oci_project.xml',
+        'views/oci_crm.xml'
     ],
     'installable': True,
     'auto_install': False
