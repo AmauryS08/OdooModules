@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="oci_crm_form_inherit" model="ir.ui.view">
+            <field name="name">oci_interne.oci_crm.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="oci_crm_demonstrateur" domain="[['category_id.name','ilike','consultant']]" widget="many2one_avatar"/>
+                    <field name="oci_crm_chefprojet" domain="[['category_id.name','ilike','consultant']]" widget="many2one_avatar"/>
+                    <field name="oci_crm_consultant" domain="[['category_id.name','ilike','consultant']]" widget="many2many_tags_avatar"/>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="before">
+                    <field name="oci_crm_logiciel" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="oci_crm_filter_inherit" model="ir.ui.view">
+            <field name="name">oci_interne.oci_crm.filter</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='assigned_to_me']" position="after">
+                    <filter string="Mes démonstration"
+                            name="oci_filter_demonstration"
+                            domain="[('oci_crm_demonstrateur', '=', uid)]"/>
+                    <filter string="Ma chefferie de projet"
+                            name="oci_filter_chefprojet"
+                            domain="[('oci_crm_chefprojet', '=', uid)]"/>
+                    <filter string="Mes projets"
+                            name="oci_filter_projet"
+                            domain="[('oci_crm_consultant', 'ilike', uid)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

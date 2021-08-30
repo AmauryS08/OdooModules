@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customsales_facture,access.customsales.facture,model_customsales_facture,,1,1,1,1
+access_customsales_facture_article,access.customsales.facture.article,model_customsales_facture_article,,1,1,1,1
+access_customsales_activite,access.customsales.activite,model_customsales_activite,,1,1,1,1

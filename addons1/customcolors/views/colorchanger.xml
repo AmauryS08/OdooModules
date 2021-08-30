@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Couleur fond : #16b2c9
+     Couleur bouton: #08616e
+          -->
+<odoo>
+    <template id="customcolors.colorchanger"
+              inherit_id="web.layout">
+        <body t-att-class="body_classname" position="inside">
+<!--            <t t-set="colorbar" t-value="colorchanger.colorbar" />-->
+            <style>
+                .o_main_navbar {background-color: #16b2c9; border-bottom: 0px;}
+                .o_main_navbar .show .dropdown-toggle {background-color: #16b2c9;}
+                .o_main_navbar > ul > li > a:hover, .o_main_navbar
+                > ul > li > label:hover {background-color: #08616e;}
+                .o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar
+                > button:hover, .o_main_navbar
+                > button:focus {backround-color: #08616e; color: inherit;}
+                .o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar
+                > button:hover, .o_main_navbar
+                > button:focus {background-color: #08616e; color: inherit;}
+            </style>
+        </body>
+    </template>
+
+</odoo>

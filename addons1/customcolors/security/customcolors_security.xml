@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_category_customsales_customsales">
+            <field name="name">customcolors_module</field>
+            <field name="description">Changement des couleurs du menu.</field>
+            <field name="sequence">7</field>
+        </record>
+
+        <record id="customcolors_manager" model="res.groups">
+            <field name="name">Custom Colors</field>
+            <field name="category_id" ref="customcolors.module_category_customsales_customsales"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>

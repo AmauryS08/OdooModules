@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="journalier_tree" model="ir.ui.view">
+        <field name="name">journamod.testrelationa.tree</field>
+        <field name="model">journamod.testrelationa</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="TEST RELATION">
+                <field name="name"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="journalier_form" model="ir.ui.view">
+        <field name="name">journamod.testrelationa.form</field>
+        <field name="model">journamod.testrelationa</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="Utilisateur">
+                <header>
+                </header>
+                <sheet>
+                    <group string="Information perso">
+                        <field name="name"/>
+                        <field name="b_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="journalier_tree" model="ir.ui.view">
+        <field name="name">journamod.testrelationb.tree</field>
+        <field name="model">journamod.testrelationb</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <tree string="TEST RELATION">
+                <field name="name"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="journalier_form" model="ir.ui.view">
+        <field name="name">journamod.testrelationb.form</field>
+        <field name="model">journamod.testrelationb</field>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <form string="Utilisateur">
+                <header>
+                </header>
+                <sheet>
+                    <group string="Information perso">
+                        <field name="name"/>
+                        <field name="a_ids" widget="many2many"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="menutesta_action">
+        <field name="name">menutesta</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">journamod.testrelationa</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="">New relation A</p>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="menutestb_action">
+        <field name="name">menutestb</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">journamod.testrelationb</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="">New relation B</p>
+        </field>
+    </record>
+
+
+    <menuitem id="menutesta"
+              name="Menu A"
+              parent="journalier_root"
+              action="menutesta_action"
+              sequence="10"/>
+    <menuitem id="menutestb"
+              name="Menu B"
+              parent="journalier_root"
+              action="menutestb_action"
+              sequence="10"/>
+</odoo>
